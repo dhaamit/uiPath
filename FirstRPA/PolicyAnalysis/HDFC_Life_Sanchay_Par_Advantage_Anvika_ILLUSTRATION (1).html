@@ -1,0 +1,4826 @@
+
+
+
+<meta charset="ISO-8859-1">
+<style>
+.output {
+	clear: both;
+	font-size: 11px;
+	font-weight: normal;
+	font-family: 'verdana';
+	clear: both;
+	line-height: 150%;
+}
+
+.output table {
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 10px;
+	font-family: 'verdana';
+	text-align: center;
+}
+
+.output table td {
+	border: 1px solid black;
+	padding: 2px;
+	font-size: 10px;
+	colspan: 2;
+	rowspan: 3;
+}
+
+.output tfoot {
+	border: none;
+}
+
+.output thead #tablehead td {
+	font-weight: bold;
+	rowspan: 2;
+}
+
+.output #table_subheading {
+	font-weight: bold;
+}
+
+.output .subheading {
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.output .mainheading {
+	font-weight: bold;
+	font-size: 15px;
+	padding-top: 10px;
+}
+
+.output .title {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.output .clearboth {
+	clear: both;
+}
+
+.output .alignright {
+	text-align: right;
+}
+
+.output .alignleft {
+	text-align: left;
+}
+
+.output .paddingtop {
+	padding-top: 10px;
+}
+
+.output  .illustrationfooter {
+	line-height: 200%;
+}
+
+.output  .illustrationfooter table td {
+	text-align: left;
+	border: none;
+	font-size: 11px;
+}
+
+.output .pagebreak {
+	page-break-before: always;
+	padding-bottom: 20px;
+}
+
+.output .remtopleftbrdr {
+	border-top: 0px;
+	border-left: 0px;
+}
+
+.output .rembottomrightbrdr {
+	border-right: 0px;
+	border-bottom: 0px;
+}
+
+.output .remleftbottomrightbrdr {
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 0px;
+	border-top: 1px;
+}
+
+.output #policydetails table {
+	width: 500px;
+}
+
+.output #policydetails table {
+	text-align: left;
+}
+
+.output .backgroundimage {
+	/* background-image:url('./static/ux/images/hdfc_logo_no_bg.jpg'); */
+	background-image:
+		url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG8AAAAvCAYAAADtnZQMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAADeQSURBVHhehXwHXFZXtr3z3rwkKh0+eu/NbkybNHsBpSi29MQYW+y9YkWwl5hELIiKUgQE7A3sWGh2EekoFiz0tv5rn0+STOa935+Z7W3nnnPuXrusfe790gqFz4C8EiD3IXD7FnCHcpOSfRfIug9k3vtTsnl8K49tHrAtj2/f+Yvc5jXed0u2b0TO38nlVu5j+xs8zmGbGzcpsuVxFsfNzn/TludvUqRNDu+5wbFu89odyr1CzrMYKH0KvKqivAbqa1FbX4VGNKGxuQlNNXU8Xw08fgIU8p6HHDOP/RQXAU9fAFX1lGagpgF4zXYF7DOfUlzG/vlMxY94vpFt2X8+x3rI8W9mUDKBS5eAq9y/yP0rOTzH+T7g9ccVQAXn8oL913L8p9wv4/4D9nmDY+fIc1OU3jgnea5s0R2f+wHnJWO+esX72c+Tch5T7rDt1RtA2kXKBeD8ZeAyx5b+RAdPX/IZ6tHq9LKNSJmxEBfmLsT5aVNxcepkXJk6BTemz0X25DmUWUpuTNJur02bg8vTZiN92nRcmTKNxzOUXFcyDRlT/yo8N3WWkmtTZuLqZLalZEyahsxJU5A1aSYyf56PaxPn4+rU6bx/KrKnUCZO47XZyJw6H5nTF+DSlLk4z+3xOYuRvSeWCntOEKj8BoKABlRWv0ZjI5UuoDypQF7KUewdNwEHxk/AkVmzEM15laSeB57zoV9TwS8ITlEpjq9Zj6jxkxA7biLi2P70ilA03y0ASp4ie+t27B/1A/Z8EYSdvv0Q5zsQB/r5IravHw4EjsCpiVNwcu48vD6RSsMn8M+p9Ao6wqNyVJy5gOQJ03GB+jr+w1icGTcJR8dOQvLoiTg3dTaOj5+CQxOmYe+YSbi4bQeacwmKGNKDB3i2Lw5neG+s/zDs7T8Im//1GdZ/9AkifAIRMexrxFD/L69lofHpM7Ta+ulALLLzRHj7Ttjl6YHd7q6IcnHCQc/2SHDxRJyjC+KdnHHQgeLkglhnV8S4uHLrjAMiDm5IoCTai7j8Tdx4jwcOOnopSXL2RJKjB8UNybwnyd4dyfYdcdC+HRLYLol9p9g7I8nGFYk20q4DYhy9sZvXd7h1wSq3dxEzegogCn5ZiaaGRjQ3N6KmltZOz0Ol1mMy1v+CxW7t8WuHbgjv8iGCvTvhYVwCFUzrriboL2jpN3Ox0W84QtlmQ7suWNupMyL8B9PC6VlZt3F87Bgst7fGznbuSOrCObq7I9HFHQe9OiHK2QN7PDzwi6sLtn/yGa4EL6a38L4CemNJPp7Ex2O1ZwfscG+PSBcPxHXsij3tuyLcg8cd38U6J1ds6NAZK9/7CDu+H8V7GeXOXsCD4KWI8GZbR08kcE4HO3VDlHcH7OL+ni4fYbX3u1j03id4kUZDLH+KVvGf+SHUxB4xrl447uWFVC9PnHdzRbqzO65xkGsELpMg5RC4HB5n8AGuUzIIYI6LG7IIQI6dO27Yeyi5ScBuEJiW4xwaRpa9VrIdvP44f8POlSL3eSPb1hOZ9k68zxm3bByRbWGHDCuOy3syXdrjgks7nPR4F7vc38XhUZMJXhGaKyrpbc1oatJ6HxrpURUEhxacu34zItp1w+FOHyKlw/sI7/Aunh+Ip1cwPbxim2f0kPQcRPoOo2LeRVLXj7C/czccHBQAXLjCEHkNV8eOQ1Q7b6R26Ywznl446eaBQ85uiLJzwlG2jbd3xKmuXRHbsTNWu1E3oUsIwlWG3xy8itmPra7eONPxA1zo0BWnPNohmsYZQZ1uZz/bOnRU4M2hHhMnTgJOp+L1xs3YSWcRg77SsRuOe3hjH8eIoI4jO3ZBuBgYz8/u/D6KUo7wGV6gVcLHPlhjZIP9lvY4QQWm0/pvuXvipq0THhCIezYOyLW1R741xcoR962dcdfaCfesnJBr6Yhcc0fkWTjhoaUzxQkFal97nEfJt3ZXkmfthoc2su+KQhs3FHNbYO2ijvPYV761DYptbVBqbY1iC2se26OA3nvfzh5Ztg44T29N8OyE8+OmMUwRhKpGgQz1/LeJ/9Y30KOqmGsKH+L+yjDs9+qAVM8uSPPqimjvjqiMjiKwzDUVzDGPmY8uXMfhwC+RyD7PdnwfSd5dcNSH4KUyt13JQtbYCYij95yl16a6t0Pqh5+hcn4wXoauRtHsuUju9B5O0SiS3Kjwd7thUydv4GgykHEF9fuisd+tE9JcuyDdtROO2rkh2z8IZXPm49acubg2fwHOs68TcxYgb2cE81oaTvn5I57Gkd3lfRy1oTO5OOPKiCAULAlG3upQ3AkNRe6W35G6dgNeXs/mc1ShVezHvbFGY41IIzMkGhojTWOGOw4uCphChq9iekKxtR3KzG0p9iixcEahuTOKzZ1QZOaIEjMHlBLARwTtkYWDaiMi58p4TtpL2wIet7RX95jZocTcjtcceM2WWws8MjfFE1NzPDaz5P3WKLKyQYmdLfIcHXDd2QUptMYLYycy2TOhVzYwxTWTqDSgoblGwYhagkeS8mDlCsS5euIcLTm7/bs45NkO2BMJ3CcRKiVpeEASdfIcjjF/pXp3Vu2SXbxwagDBO0OScP0WLn39A/YzPJ5168xo1BVn+g0CDh0lkbgGnDuP5rANiGHkONu+I455e2E3U87zFSHAteuo27YLh9u/j6sM8zke9DwHT9TMWggcO6W9P5PKFwJzVwgMiUlMDJLe/xAn6OHZ9NRjDk4407cPEB/DtiQq9xlWH7Jt6WOmBZKcSjHURrSK6dkLq60sEWFmghgDHRwz1MNVKvKupQPBc0aRNbeWVKKptVbhFgTTykWBIvulFgKWLYHTAlxqRu+hlJhza8FjK4JFr5a2si2zZDvKI0te4/VCerN4tABVam6Jct77hKBKX0UEsJie+MDeFtmuzIVu7rj403gteyN4dDn+NTHd1aKxiQC+JsssyEXZpnVIZmi6yFRwkRHkNMMVVqwEDjPcnE4DTpwBtu3FxZ4+uOjujctMAYcZws4OZM5LI7Mjm0z/9kccpDeeb/cBEp3bIVG88jyZXyHzrYB/4BBOfNoLp7y9cc7bAwk0roKfJtAo2HfEXsQS2PN2HJ/R5bJHJ2DeUiAhhSGZoTWbufEmCco1Yds5qN+5A/s9PHG2XQecYlg+1aELcqfPYv5lW2GjLyrpaSIv0fyKW3IzsdVWMX27I8TCCDstDRFr3BaH9NriZNu2yDS1wj16UIGtKFYLyiOKeFMZ89EjhkTxNJFyAldOIB4TsEdm1vQsK+U5pQRdACohUOJlst8C3GNzKwLK8EjwC2goxexDDOSxxgHP6dnl9NZijQ0eM4Tct7BAtjNJFAlCOhkkbpKdvWCOk7jZqA2ezSB44nkF93FvxRLEEuhLBOQmScM113Y4//4nSP7gE+x772Oc7O+Pi718ccKjA84zqtxq3x4nmIvSfAPpVcx56dnIIhAxLsx5zLXJ7l0QPcCf50WZBK+Iij97Eck9+iCtU3sahz1Ot+uIW8O/Bsh0sTsKKe4dkcGQnMPcd86OAH7SC9lfjsKFUeNx9MefcfjH6Tg3LRhIOoTaTZsQx9yWyjlc9GqPWJKc0tVrmT/pnVJ61LC8ecXnreOW/6+trQV5GlpF9/oYIWb6iDDXQ7RhayTrt8UxnbY4/Y4uss1s6YF2KLJzwAuSkKdUdLGxBcqZowQw8ZBytnlsSiVT8Vqvsf0DSAFReSU9S7xWDOCZtaO2jcYCFdyXEFrOnPiYxvCE3vzExBmPDZzwzMQN5cbc8noxvTfbzpFhk2RqDD3vNi1fwKP1oYlP0VyHpuZaPhVZZP4D5K9dhQMMsRfJbIUUZdi6I9W5AxXaSRGYZIZSYcLnSCLuuLXDdaaJg8ztx/v6EpR0WnwWMkeNoxK9kebZDYfcuyJJvPIyrz2k4ZQxdJ0/i/09PkeSgwMuMdwdYj+XA4ZpPS9qH9k4CR/D9VXyhRvcXiQximce3EMitdG9s2LOv3TrjmbJeRvW4wQ9+CLBu+zljXj2V7hug7b2ZnhURkrbbKolu2akqaqvRk1dLcHr8QlCzYywy8KY4OkgUV8XKW11kPKWLk7rGOGKiTnuMqSVkUBoQ6IdnvHBn9ownxEwld94rkz2VWhlW4KjPEzCoZk2ZJaSxAhQRSb0TBNLlJlYKdBLjWwJmivKNAypxnZ4qnHBC/N2eGnREeWGrnimkZzpgEyOJ+Qg7aexBI9h87l4GuMmwRPgFHh1tNLCPIK3BvEeHZHu1A75VHyGlRtOO7XHAbLWbSxFdpDVSv48zX0BL9vJEyfpoadZS+EsPY8FsoCXSO8549wJh0k8Dvbz04L3uJRjM5RduYx9PXsirWMnnLFzxmHmxTQ/gnfuIhp27SYA7XCJxC/HzQ0X6N1HHNyxiyH0V4bgrV3+hc3vfo4VpP7YvQfYtBHJLMnOU656tyfzd0PF9m0syGmkL/lMEibrmlDH2lYWJJjlVa5vFfN5D6yxtMJuS0uGTQ0SDDVI0jdFsq4Zklob4ZiuIa6QQOTR+oW8SI7KowcW2bqonCisUaSIebCQ3iMhUNoIkyyydaOQYfJagbBLelY+AZSw+5TnJTQ+NXXEC94nXv2UYzwyZz9GzKvGrgTXA89M2TevX2dpkcD8dFo8746ETdZ0fCCJH03K8+iJtTxX8BAPGXISaN1Xqfhsay9csWuHx9+NQeO6dXj960a82rwGdcuX4OrHn+IyDTGd3nnaozNOCEBnyDYz7iDjh/FIdOuKK57/wnFnhs5+BPYigZWcV0TycCkdsZ/3UaCne3bGoY4fIf3r0cyp51C7aw+i3ZhLWStnu3vhhKSLb3jttx14vT0SjyL2oDQqHvk7CBzzaMOW33CUxOkSDSmVDPuAuwfuLmftWCLEjGVNIw2TYDXXCzFrwPMXT5QHttr/SU+E0WMimOP2GZG06BsjQd8MyQZWiG9tjGQ9I5zUJ4Bkow/sXZHPQjOH2wwOkklr+mudJ1u5ls0Yn03gMoUi23ogiyXCDXsv3GJNd4ug3eG5O2Syt4xISEzpmfTEEhMLgspwKwzXkoBZuDGfeiivLGaZkSXFvdD/cT+TpRG8l7LCwmeR4C87spUCPE/AW8+yoguuuHRBjmNnpLd7n9a9hd5CJnmbbO8GPYi0/pKPD9IYGtMpJwmAAi+Vbeh5V78dgziH9rjk2I0h9z0c6T5QS3ZKWaY8eADsjUfKR71xjmEwmUYcx3Lj1uTZBP88GiOjEMfy4hJ1dYEGf4k1Wv3iMMVwVdQoofcWUQopd3NR8et2RNPYzpOZXnRtzxDshTszptKIOJenDNEvZUmQ9WkNjbOa0kSjraPnxX7aE6tNyTY15gybxoilp8XpGCrvS9QzRoqhEZLatsHh1m1witfFMo6ThqvVBoaxgw6uarXksKM7jjCHHGWsF5H9FJ5LIaCHSZWPOnnjqKMXjhHQYwToNLfpBP++eLAVQy9ZZRGJSQFJTDGVIV6caywhWEoVV4LgiUNeHXF2rOQ8qdcYTpgD0CDeJ+GTGL4mE7v/AIWrNyDeuyvOkeZfcGyHZLcOLBV2U+ksFZ4wjzymXEhFiu9AHKV3XKBRSBg9MUByHhll+nVk/TAGB13a03vfxSWHzrjci8AeOMj7yEbpXa9mhyCBhnGGRnKcRfRO7w54voZ5itebd0QiuR1rUurpKkOyrBg9WkLwbtHonsvSHgEQul9JT3pEYFieRHXtwfD8Hq56foBTnHPKh/9iqRDNsoXj5dFYZG04V5buygkoc/vrOoLXvSdWsTSIpOLiNCZINDbCQX0DJBkY45CxCeJ12zIP6tAT9bFf14BJ1wsXBgXi0KAAtSJx2G8wjvD4KOUY94/7D1Ei+8cGcd8vSLv1DcJx5pRTPoORSjnP4xtkd8IEb1jbIt+WtR6L9HyyUCEoZbauKk9KPi2ydkI2DUTqtbQx4/ggtwkeH+AP8AhcE/95TaXk5uEhC9n97alUsr0zrJt2kQBUxe7lg1MJUk5UsF5Kv4IYvyEK5NMkMJKjjgwkQOdp7byWOXqcWgq71u49pDFqnGzfFY8mTML9KTNwaeS3jAJUsvcHiGHYTXj3Pezp0RM4ckwBLznvAMFLo0Fc8u6IBLLagrBNNB6y1Moqhj+G+BohWJQXNMKcuzgY9D32kMQcd+qMsx5dFOM81rs3sn/+GbcXLMKVOcE4Nm0Bto+fjip5afC8Eq2iPv8UK81NEGFpimgjXSQa6dHb9HFQRweHjAyRYmyABCN9xBoY4jeCd0wo86ETTN4MPzlUYra8AaBk3dRKJovOjJw/JZPXrrIovcZtJuua67xHVuVlJSMuGZl9fRianJEjBTmLUyE6wmSFCBUaWylGK2DmkFwI20wbO4Y5j329ZhhpYIlAzAQ3eauAGlryw4e4tXY1fm/vjX3enjjQtRM2dvTC04R9BE+8jmTjEa034zaiqbCodv/CoQ4fY1+Hbkj0Z16T57qegbOjfkSEF1kkWaCUEafbtcdRSqStA2IYEhPceNz5fcR3/QC/dOiMm2tW0aj4/DSsqphYbKMxJLfvgBOduiKceS9nFcEreKTqtOZ6hvlGzreKkULCYHERXiWmYOuHn2OvW0ec6sKCvWs3HODY+1n7/cootoFMdeMHPbDo8354cJDlSPlztNrb/TOstNBgl5UZovTbkLCQbRK8+NYsG+ht8bptEGdkgGiNGdbpmyBh8HCCRRDkNYpYvyzyCiMSq5cCUvbl3IuXWpHjciZdWgpeMFTIG4EnPF9MD6CiUn39cMrZlWySYLFAldqunAz1Kb2uTGOrLU8IXgZLBVkcPj3mJ+aJFvBY79Dp6vlPnSDYQIsuKsBFss0l7b2wroMHNnfriOCu3ihIiNEui6m5ssa4V4z1viOw0rkzNpFNrmnXFdsHsRyQ1z53biNp9GiEEvzfWIDvcHNFtCzas9bc5eqOfWSYOz28eJ8b9vbthztrWJPl0zAkHxYU4lFCIpZ48d5OHbHJ2wshHTrh0vpfeJ3PzGjRKG8/JGIwdzU1ci6vqS+G+3sbt2Bfr/7Y5OSGbWSpER7uFC9Ev/cvbOv8IZYyRM94/2M8kddEDL+t9nfvgRBTU0SYmWG/PsEyNMBBAz0lEi4FzDhjQ+xmXbaWJUCk1DL3yYLkHVQ93V4Gl0VhmYxwB7GoBglnvNZATxCmpK5TxOLkmoQLeSeXcwMn/f1xytNTgaMYrAmZGcuGx2as90SEwTKEZtL6Ej3IxsYx591n7nhFA5DETaIiXifDqn+eVaCMDO7cqtW4HLIc6WHLcWLZIrzOvE7wmF8qOO7LGjQWPUZ6RBTSV65FxoownF0WistbfleEB2XFuLl7J44tnIukCeNwYvwEpE6YgJOjf8TpcWOQ8PUXuDx7Dh5HRmpJUAEp/ROGYpkTw2LFtas4vjIEl+iNacuX4VRYKB6nndUasRTaMldRE3UmkV8Rr0c06kL2kXoBt8LWIm3KZCR+ORJ7A/wQFTQEMV9/i/iJk5C6cTPq5PkrGTajGasFvEiWA9EGRgyRZJuGWvAEuAOs/WIYOndprLCKXrBDPO8BH7DyJdkr6w4C1EBg1Ps0NSlOroW+Qyh8NUWWrygEWuoTCOUVcpGTg2MB/jhB8LLpdSXMH1ILyjqpqv0IXqm5M/KsnZFB0iOlgmKbMnnxIDEEodBNDWpY+WsSq35GJZYyPBYVq5CEMnqERAbJL1LY13CiQhaeEsxStikUwNi+XFjdCwoVWc77CpkjC5mnmEfVC+qbTAn0SilH1EvcQrYpZ98vqHQpU6r5TCqPsY8XBKqUbWRFppys8gX7rKtDQxXHFeAam1FV14gaAU/mXs2TYlgl7EucI5cGIWH4NsfMyuQ5HothFbPPl9JXjRa8lfS6SBIFYZvxQlIIngCovM6gLfabGKhSYhXD1/agEdpOCF5TfRXq66qYemoJIJUoExFRAIqW/pRmETYQUZ4oL1Nv3sSJgACc9GCZYUtyYuOiltEemzkqryvRsLj/v8CT0Cze3FSn5tDEEcSABU9lRHJQRUW+lHY8wZqwsZ5bTq1R3nhXynkqq4qhrIagSYHfSEOrpuLreK2JQLwiAPL6SNKBCL1KGZ3cX0EDqeWzCWA04MbaGjL5alS9ruYhx6WBNlezzzoaeF0lp1BPm2kAr+AFjfg1J0nqwnM08XrRCSdWxX5fsj8xNJm36EjAlrEkRamQz33plxHtD/B2k6LHsM77EzxdxJPAiOdFawyxy8z6P8Br8TyJ200qhHFmCkDZ14LW1CjX33idaket0mrURDKzcIrgnWDuuCELABYO2vXMN+CVETzxwnyCmsGyQ8Jm2viJbzxPlE9VcByZgwxdQ+TEkiUUVVeLQRFSAYvTqW7QgivTU+hSmbWVBA7VnGU1y6ZqBX89AW1qovLkTQXnrrykkoZJvUoHAnxTHZ9DPEU6bGqkQ9UQT3m7oT0lTy7zkH0B6yWBKaeXyWg0BXDmFFmNFfAa1FKXegCxPPYjxt/AMeRPbeWanOeDNFcKcHKOdZ4s8YSY0/NYKkSTXR5gfvvfwBPPC7O0x7YhDJtvwJOHa6bla12OfzKI7MogAhKnrwW3VgHcLOdFm2K5EsKuEzw/fxwn27xpzXrOnCHT1A5PzJzw1NxVAdgCXkvOU+BJSBHw6vkQQlo4BwnbDVSkDK9VYKOSKj5kFXOiQPOK7LSKiqqn5zcqw6NlE50WkOWvTt7KK5XXKI+uZ44SZi8gCqFVj8q2Ev1VEGEer+c8Kl4xffCSRD5Zdn3JtqXs/u7TBmSV1qCAFwvZvpz3PiLDqmRnlexf0oiKRhygUdIP+5OpCAGr5jPVcmJytVa8XMaV65yQtP0P8IRZHjDQVeAlGOsp8CRs7tRYIpQUPnwwCYt8eFNF5Yll0vLFmxQo8icjKc+TRVQC1gLum8vqT749EcKSka3AO+Hkgjt28prJUZUI5QTxsYZh1ERKBkc8ZNj8E7wJWvDkA6RGMQ7RrDwcDYTeX8sHq6ax8AgVNByxcJqZrOsqqeVcani9XgxP5sepSRQXWxMQxQMJBwGvY1ijjXLer9jmuUQwtnldy7t4TpxEHlPGlLAns3hB/T7j+eziRgT/koiR09eh9/fB6BIwEb1GL8bwWauxOfYEGJjZnzBlAvYmIknq0Rq89mOqeorMVc6IyBjy5YCouZ77slXgrTAjYSF4+8k0W8CTei/RRP8/wPvD86qpEpKQFvDkIRR+nLy4vViTvOEWotJyXSKr+pMYT8aH6zdwJmAIwXPFXUc3FFm2vB+kMGQWkXnKS13xPFk8TmJ9pVZY7t2jpsTz6VE1tEJ2qd4MyVYenGp5xlD2hHN4xDblMhyviZ9Rv1SGWDNzTg1zHO9TxJgXpB8B4Tm9gfQF+byWeD0P0RfuI/VOOco5/wo+40siJ+0qqXDp5zUHp4OhiCdTMkrx+TcLYdv9R1h8NhqOPjNg2XM8bHuPhX2Pb+H4cQAmL1mLKvZVzTwpAArhq6uVSMAO2Jd4lioheO0VCZQig3LEe8TAVJnI43/zvL+Dd1BjoEKnNmxa/Jnz8smgaiRyiy0TID6s+vROwBPhDu2HImqkCJBvwJXLbMwn50Szb+OU/2AcpefdJngPLbUvbsu4Ve8NRbhfYMsi3tkLyR7ttSssd1hnPq/Qhix2J+xbUoN4guzfKSrDrNUb8EPwSqw/cAKpD56gQHgA21bL0EKw5D55I8F7muSNPOckb+alDekLjt4rwoApS2DZ+1vY9h8NN58fMT5sG+6+qFWG8Jr3Slh+XvtCeTfLfpwtrIaH30SY9xoP16GLYT1oHuwDF8EhYC6s+05At5Gz8Mnwn+H79QTkslSRMC9ERqKAAKW8T2I0damsSRYhBCnOWUKz8jqCJ8BJTm0V1YN13v8BnniehE6t55kz59lqw+Ybz2tmGSDgiHMra+aYyvv4J/DJ9yWyFVH/8ppQZAWeIiwsFfwCcOTNx03y5qJA3h8SQMl/RRrtpxL5NrI85oFkWXUfPUZL28k25esxAU8eXUBTbJsPtXr3QZj9axBcAsfBrNdo2PQdi7Ehu3Gf8UrCoOQSMatahnQhKY2KjVApvF8+2yymJ/adsAjWA8bAdsgCmPnNhcWASbDp8w0Wbt2vBY9KrKKnVDFAy/FD3vvlih2wCZwNA9/ZMA4Mhv3XYdDpMxEOQbMQcigTV9nwDm0+s+CJer8qBKuaBKmS7FbmIXqSeShD52RaUpHoTIytklxBGZ3sE/R/A++vOU95njGLdnref4AnOa+Slt9YyaGkQy1MkgvEkmVIAUv7cZAU0VQQz4so8Pjgiupn5eBk4BAcdXPHTRd3PGS5UGjriBJuS5jn1KcTBO8hyUyWveuf4MnapioVtPRbwFMvm6l4CW2LIpJh3m807EYuguHA+bDyJxA9xmJ1VBqeEm0JWZJTalgaVDdUcp7aOlTm/ZwdZT+qhrf/OFgPnAwT/wUwHbwEGp+psKEH+oyfi8IqEgm2FUW+aqpRnprDSbgPnw2LoCXQHxICvaDl0B+8ALr9xmHjxQfI5txo8opxPqX2pRyV8Rqk/uUMZB4Vlc+VvrQgUl80MsFPdMbb3wDXoEQ0q1ZYVKlgboEYQ0MW6WSbfwFPPC/WRBs2Qy1s/izSq14QKKmv/gRPOm8Jjf8beMrzGCoUYRHlk7CI5x1yZk5zdEGulT29z069ZZCyQb3I/Rt4ZyVsytfVqkhnyGH/kjleChWnRlniYlbEYZgHzIThkKVoPSgU5sM3wvCznzHtl4N4yjmI4sXrZN4SNQREyctifC84tXv85/2vpsLCZxysghZAz2c6XL9YBONPh2HSum0qRLaQGWGNj3jPoXuvYO8/G//oMROarzbDYFgo3h4wBR9OC8VVXmeiYR4liaJ1q0hBACVCSr7TRi+aUBPznsyKYVSMSeBqqJdMTcBIpGppKPXUt5ZssVT4O3iyPCbgKbb5hnHGaYyU5600t9aC9/DPnCc2KB22LFEp8CgCnjYXakVCAE+rkKDAk6+XWSqcGKQNmzcdXRV4D/8Knrl8pGSvwqaAl+LeHueEsMhHqlI0EzwJO2K78qgSMgvZ/eStiTAheDr0gLf8N8AoaDPMfeZhypZklNLzXhE4YaSiELFomZfMT/ZFVWU88evJDHT5bh70GXaN+02AVf8f8ckPM3E2/xGJkJZVigYkZIo37bn6GPZBi+ltq/F24Gq8NWgxx52P/ku24AavF1EjTznLKgGHx7Q1pacalgCval7zLEsHAibzkn3xvoY3IIp3KkB5RQCUYwG0VXTP7gTPVIEXbUDgCN4BffkcQocg6iDOoLXyvJ0mZljJWm/nECEshTQ9TlssRXVGy6GLCy4cU4kCk6CpCfylxpM8pVZGFHjZSPUbjJPOboqwyFdkLTmvJWQqwmLtpF7yynciyvMUeFrPE1pUQzBkpeIluxaWGBx1DKYB09A2cBneCVgPs5G/Q9NvFiZtPqg8U1QlChIV1cmnFFSikJbKqhpFaAScfLY7UVaL4IR0zNmXhrCEs8il1gUoAY2mg+e8VcJ0Cfd3ZTyHTr/pMBi5Ca2Hb4LeyLVo6zcbw9fvQzb7K2abco5K7sgSpk4Zm3wAJ0DKOrl4svT7ijoSkbwmz6QW3bkvi41iarXC7pWZMWz+/8CL1X2b4Okr8ELNrLFr6BeMAUUcsYKFauWbAlnKBT4F/6/6VVbFUeWErLSISMyUU1Q4NUbTJXu4loGz9LzTTm645+CmgFPfcDI8yxpnsZl8Uvjv4KlvWIRtEjxhZhKGhTXKsOI1Rex+4d7DMB44CYbDw/DPgWuhF7ARFoMWYBI9r4xthB6IIkQxMiX5p76WmuSfFPRSXkh+Ol3egEvs9Dov3eWj3Oe0H/M5pE4Tj3sqwHHge7wekf0KBn7z8N+BIfifoevx3wGhMBy2HINDY3GNcVIIjcxNVlgqKC84ZgXPPee9YghPuF9KEeMq4bnn3HJ4NYZs1T0UAfk151DHybeK7dkDoab/Dp6EzYNv8l6c3jsMmyQsBC9EY4mIoJHasPnyGYtbqoHgqeUxepQUvMqU2LF4mjpB75OlKLqhArBZFm7lvdtTPsbVDFzwDcBZR3fkObhrv++kt8kngrKyIvXeE3qgvFlvAS/1L+Bp4zQ3HEJEPrQSBSzcdwwGPpOgE7gCesO34W3fDcyBSzFx6xEUsL0oS5QgUxXWJtlPuHEdC76XNAhR0qKIBHgNmwiXoGn4eHwIJv0Wh5u8SfKdAoD9iGKjz2fim2W/wid4J3T85+CdEavwjyCGzqC1MBq6huxzMfpPC8fAcWHw+3E+vp22GFnF5Qp8MZJSzjmPKjlbWIkNh9PVOF8t34GRi7Zi5ILf8d3SHZizLQlJN8qQSxeU8UtEhdz+DTyjP5bHDhobKMIiRfoBU4ZNQ2Os4PXd8s5LPgAqZ4CS1fcaqkK91hdhrxID5PsSWVyV838XUbrII9rYlWu42H8gzrKOy7VzVQRF1jblPV4pPa/E1FZ9lFRi66J+/yA57w/wZIFYjIEPLxxIHFs8T8Lm3N2HYOg7BbqDQ9EmcAv0AhnGes/Ez78dZe7RWjlnqkTWUwQ8VTIQwgoWjGU0hO9DtsKs74+wGTIHmgGs3fp8ix4/zcGNilrFLgXgwtcN6Pn1WBi+1x+a/mOh6zcHOl8QuBHr8M7gNTAethYm/ebD+JMxsP74Gzh8FATPzwOR9fg1SjhfMaTYqwXwnbIKzn7jYND9S7b/CZaDJnJ/FOwGTYdR959gS0O07PMj/OduwtnSOrXMJp7YSr49DDU3V4Qk2tBEeV+0vi7LBQJH75PPAaOMKAyt4dZWOBU0lPHkDGst0vX7D7SvKiSM5jPy55cCucyH8hsy+e1ZHj1UvFReq8jn2vfv8RzLjALu32QaP3UKt/wDcMXFAzcJVr4JPc3MBU81zmppTD6BkLfq4nnyMZOAd0ZKBcl5wjYl7vFBhP8IARBrlvwzf+8xaAay1hrCvDNoDcnLapj1n4np4UdRQuAkt8jP9FReIWAtBEHCbwX7LKT9fbFyJyz8p8HQfyE0Q5bAcdgCmPf8EuEnLqu8J/nuCcecFLYBo1eFo+f0X6A3YBZ0h6xA68FheMd/Odr4BqPdj+sxfMV+jF0XhZ9CtmB3agbu0Iav0e7Hb9gPa9+fYeU/E1aBs2AzdJ4S3T7jYe43XZUnVv7zaTyzOf5SmJG9fjZmGTL5oBJW/wBvF0uBWEMNGaex+uRBhU/KAYbMGFMCamqEcCN9hDs6INnHF/sDgxA5dCS2BQ7GbwTg94EB+M3XH9sGBmKnfxB2BA5FuP8QbGW73wID8XsgrwX6IYLbXf4DsctnAOJ6fo5j3p5Id3REkXsHPLL1RLmZK56pL8dY6zGEylfa8g2LfPonKywKvLstpQKfQECgEgUI8QYhBnMl5/nMhmHAKhgErIFm8ErWfdMwY+uhP8ATLxXPky7E74Rc1TAfV9CFC9nniJCd0Kf3thbWOGwVTAbNZR9jcCCrGLn0OEUuKBJCb7GjiOsVMGNe1R+yErr0OMMRa2E6LAR+IXFI53Wam8qjNzhwJsHrM4lzo3fZEJS3ek2GxdBFaNuHpUngNPiH7MXIdQnoMGqlMkLnb9fBauhKGPSbAU2PUQiLP69yd6uYHt2xxswCe0wsWBqYIkFeyNL7kt4AKJ63X8SoLfYa62ArvXAdPXIpry+gLLMwwxIzDULYx1JjbunBS+nByzVmWGqqwWJTEyzQsC1libkRlpsZYDnLj5XMp5tIiKTv06bGuGfvon5dlG/EfCef/lk64qGptQJQ1jYFvBTPDtrPIHKpCnkfp3Kq1gEl9L2gCHhz9qTA0GcG9PxDoB+0hvXechj3nYQp4ckqVLUkfgFPcofkPvE8qUtfciuh9YuwHTAOmA7Tr9bBYOhqAjkPxr3GYl3KpTeMlfmVqUK8nXEFuzOfQUPCojxu+Hr8l+9SmAxdir7zt+GWtKXI2NL34AVbYNBzHAwHzoXB4GWw/W49c/Rk9JmzBWdoDenMCDl8tKucWO85O7T99p4OuxHL4Uhwv1+5XQtebPfuWEvF7zUmePomOKhvhIN6+uoLsnh9fXoiRV4NUeEJ9MJECxPs5XYXgQln/bfdXINtZibYaaH9lCLSzBzbjI2x3cQE2wjKVjNjhJubcGuErab62EEv3kUAI030sEf3HRpMWxzT08E1Gk++rStKbNzw2NFDlQ15lsI8teBl2HmoT//UB0gCnryQpKIl4MlqSR3/95Ki9bxDMPKdyVwXCl2SBz0qyKD/REzenoJ8ep7kC/E8bdj8EzzJebLsIKH3i7BtCjzdwSH4R78lsKIn2QXOxbaz99SCdX7FK3Xvk/oqBczOyyUwGDAdrel5bw9bh9ZBq5gD58N/8U7c5EAFHFcUvv7QZTgNng7zoGXQY1sFNkF0+3oR0mhVN2hRYgxMRrjG/RUn8gjcRDj/sEktu9n5T8GQuetQzP5axXz+OdaYmmGPsdbrBDT1Dcsb8GS5LJYApjBsJui1RRI9RRXvDKESUuMJnCyfRbG0iDE2QhyBi9doWF4YI5qyX8MtAd9vbowoE122oRGYGap107i276jfRqS0fhun3m6LDCNz3CFJybNxVL+RkNUW8UD1DQvBO+zZWVvnyU+eqlgqyIL3H+Bpayix7Ll7j7JUmEPwVqHNkDXQGUzP852KaRFatvmS90jd1LIqpKIv+5J6tZrnRckjVoRDj4CbffUL3hnEMMgQ3Oaz8Yi8VIQi9qFlrI3cNioCs+NyIUPrbOgwxL4VtB6GX22CUcACFX7vcgDJkzK34cG/w6gfw3EAw+sXW1R+1POfh593n/kjtAp49zhGNrf+qw6greTvocuhz62Vz3hM3LAXj1rAWy0rLAQv3pAAvXkRm0TAJHzG8VyMrh5S5NsWnTZIopck6bXR7rNtIkFU7XR1kcy2ArpqS0OQsCvAx8p6KVlsLPs9QLCkhjyo+tHBUbY5TiM52lp+3KKDywYa3LWj17Fwz3d0hvp0nt4ov5494t4JZ0ePZwIh8WHYFIXzGd+EzSbWTs1KsXP3HIeRD5kfiUprkhZZadH4z8Cs3SeVAiVXCXAKeO6LB4rfCXiy3CWe9MXy7fTWKTAdSSIyhEoesAL2w1bgt9T7ClxFWGqqVPiUWm/39TJYDw1W4P1zyGqy3FCl7KFLt6qCX+7JeFaFbt8tRNte09Fm2C/4n+G/EcQV9PC5SChsUOCRzim5xrg+efdRmATOYPgNhmbYEvUMzn4TkJr3XD2DynmrSFgiNSYqRMYxRMYzvwko4nlJJuYqnB5Sv2EwwCECc8hEC3KioSEO6OmpD3RTjDTaNnoCIIHTMyZblbxJbxSj4H2JxiYK6ESGZfms8IgR2+ro4RCBPqzLvglgKgnTNSsr3LZ3xG0bW1WgF9h4IMvaC0dcO+HcqAlkmwwqLEXUig3BEs8RECT/SNicv+cUwZuHtv70lqB1CjxT/9mYHXVagSftBHAp8OWlq3wIodYUKa8ISjHB+GpFpCILeoFr8LY/CcM3v6FNn6mIv1+JBxxQ2J4U2kJYJBTvzXmFNr0morXfUrxD8DQj1sMsYB4GzVuvQuBDtj3/uAofjQmD1fBV+K8A5sXADdAMD4Xd8AU4yY6OPHyOnWlXMHv7XvT4eQH0uo+AZdAsmAbNwX998h3sAiYjJCYVZRyvor4RreJ69cZqC0uVw6IJWIxRG3rKO9rP/ugZAlwSvSFZX4OEtgS0jZ4CVTFRAqBypK6hkjh6TqIOwy73k0l+4vUN1f3KoxUR0gKbTFCT9diOwEnbJD2OQdAT2uggpW1bHGnTGpeYQ+86OKg3DXksEzLsvNWvddIEvLtUh3wuzj/tW2dVMSgSInXegr2nYeIzl0V6GNoy/7QJCoFx4GxMj0pTYUnCnLStbNS+v3vFu1UIZF+KsbK/L0IiYTSApIdA6ARthN5Q5jCfmfj9chFYIKm8Kcto4nX3ud18oQwmpPW6gSvINNcz3y2DOcPh4OBfFXgFlPQXTXAePAt6Pgth8v12tBmxGYaBS1QteYwsaF9WEdx9hsHkw16w6DkY1oN+gJnvGBj0GYW+MzciIj0fuUy0UqII2SJh6Y215tbYZ21D5qeHOBOGM1NdekdrehI9j0oVkR+cqK0+PYjeIZ4koAgrFSCSdNmWIvsKHLZT18g8xUNl/w/Rp7cyzAp4SXoaJOoSYHqqeKWE00P6rXGarPYSc+oDB3s8dPXCFQdPxDp5sVQgePJp3EuqXHJdg/ZtttB8gbOUipy7+xhp9TQSlRC8M4wADifNHjwXk/ddwE22kZwiHiPrkgK25CNZ9pJzwiRzqZwvwyJhGjADrf2XQGf4WvzDdyF0mNP25tbiBj1PPFg8NJ8Sf6uKdd42WEpeYg7THbwKRoErYdh/OoYs/g13OCcB78rLZnT5djFruWXMo8tUvjMKItg+0/DrlXK1gJ105xHmbI/GiEWrMWThWozfHIXIq3nIYZK9T+BkjmJwFbVNaLX3455YaWKNbUZm2EvFxpERxmsk58lHtwyh4mX0IJFEPXrSGw+KNzBh/hIg6XUMpxIKRdS+vFpS7aRWNHpT8GuLftWfLL2xbQJD5UFDslwDSxwwMqWwP3p/kgFJjN5bOKb7Fq6QqWbYOeCiqzcS23fFSfnpsCwOyEe/krWY96RGk/wl7O9hdTMW7T0OK+aRtv4MYVTO/wQGq0Xib7efRA7bZNFsM6mMe0x2t3nTTXYlFi1ASkgUZQ8N3QHHrxeQDS6A7giSnmFkrtz/cmMKsnhd1jNvUYtrEi7DkvWace/JaN1nFkyGb1Dg6REcU59ZGL5su/LUXBpKLu/7YfV+6H4+BnZfr6aXLlelghAb32X7cJ5zyma/99leraVyK/nvDucruVzCZfL5a1i8dgsqOPdWsb0DsY5WvZM1VrSFLcsAI0SSkMhX0kI09hkZKlEhVXIiwRBAVE4jeAeY62KZu+RFrogwTiVGJuq+/cxz2vu1fWjbsPBnm1i2iTOwUrKPYVbaCrFRb/EN3mGI/ieO8Z5T1pbql0nRnbrhyE8sFR4y+MnXyfVvPjtUvtesQqGExOUxpxhuprJAX4y2rPEMvgxjCF2IbjPC8d7Pq9Bj5lp8NjEM749ajO7jwtDjp2UYMGE5evwwE5uPnlfeOerXGLTtOwr6gYtgMHyNYocWI9fCZvB8BAbvwrdLd6LH9/Ng1HUQOgybBd/FB+Dw9QboMM8KUTIeHArNgJkYviQcN2kYsiYp+fh43it4Bc1gQT9NgaYTQPBoYG36TsR3Ww7jNB8gm2DdIVBCdATwK4+qEXnqMoZPnAPnbt0xM2SDytutwrsPxDxzZ4QaWWMr6fl2a2vspLJ2WVoiXGo1FuHbLDTYwRy0k9tIHu9lXbhPY0Xqb4nd5lbYaW6pZAdzZ8tWZLu5xR/7O2UJjhJhYfGHyIe+uzhuhDHH1dD7WdjvYtkiS3FRrBH3sJyQUmOfpQV2O7lhR7cPkTJxMs2RWeQZn1JeLRE29X0H98Tz5MXoooiDMO3zE8yHBMOITE1PtlSUns9UmA6cCI3PWFj6T4JRnzEw6zEWDlScbffv4Nj7K3z83RT1FmB9WhaMBzDnDOF9fouhO3ApDAaS9fWfBluWEI69f4T1R0PRfdRcRKaXYUdOA97uNQvGw9ajbUAoGeQKjjGHpcFW5DG0Sjgua2xS9V746ZuwomFoBkyGzZcsGVgPavx4b/8x8B4xDUODt2DCpj2Y8steBM1cjg9HjIbTpwPg+kl/jJ67HEWVzXjMObZa1csXP9u5YJ6VM4LNbTCbnjSHHjCPXrFYY475ZKEiskISTK9cTFlOUEMMzRBiYIFlRhZYzAI/mDXaImNzBLPkWPQXWcj+ZCvnF5uYUTTcN1GyhKFyhZEVw7YNlpvZYAnHW852IWwXZmKKUGMNltHLQ8ysMJesd4aDKyJlYbqAGUR+nCGvl8hW5I2CvCaUzxuEcKzckwSL7l/B2m86dHqPg9WQubAcNBP6PX5ieBsFS9+xSlEWAyfBiR7gTDBc+o1R4HUZ9hNOFj1Xny30mb4K5rxmKUtjA+fD1n+R9uOiQRPxwciZWBxxSBt2OY1oFma2w5bjLZIRo+GryRC1qzrDF/yqXhALO33GUkRylhCiI/cr0HfaWuj1GAVzv6kw6cd5DpwAi97fw7rfN7Dr+xXMP/GH5af+cOo5BO8P+R7LdsYgn6FVXhFJlGkVNX0GwgIHY6OPHzb388WG/gPwe0CgWqcM9w3A7wP88LuPD7YO6I+tPn15rh+2+QzAjv6DKP7YNoDt3shWn5btIIT/TbYNaBFfHvuyPx+E9x+I8F4DsL2f35uxBuL3vhyr9wBs6+2jZGtvX0T4DcVmjrXGfxhSwtbSvWjHr5lwqmvUezh5tyWe95r7sjZ5rfQZfl6/Bx2/mIne09fivR+CGR5XosfYFeg9KQSfjl+CjyeGKOk+fhn6jF+Onj8uRL+xDInTF6q1Simsz5RU4evlkej27RJ0/WopPhy1AiMWh2NlLAtqsiMhK1L032bbiMznJCIEbshi6AUEw5TeLsYzeNYGRaJeMEK8bpY36SRVNc3MzcyZPIjOLMGc3ScQtOg3fDxmMT4avQgf/jAPH34zHb3HzcdXC9dhRVQyLhZV4CENRVju03pZyiN4eMJInM/UKD+2kN9a58uqPy1bfoV5X4Tc7B6vyU+J77GMlE/N5YcX6hrlAe9pEfmqTL5vadmqfTkvwntE5CfBIi3H8h9dk3vlc0J5OyFvImTMXNkv4T7nJ/8FvfssnQuZOeS/sldTjzr54ppKkU/25LWeME95o/6KJFq87y4flL2rpH+bYEi+uc1b5KWoAHOHx1lUvtB4JTwv1ySsiUiYE5KQx7Y3eF8GO+UsFVOV5TMhN5JfZSvMM+FBpXp1ZDF8IQxYUwqDtA+YjsV7T70BT771ZB3ZUK0AFLolr6ZaGK6MIyRIvjDLEOLCMcVAZA6SL8s4V7nnZZOsJvHG5jr8P3zxqv2WRz7AAAAAAElFTkSuQmCC');
+	height: 47px;
+	width: 111px;
+	background-repeat: no-repeat;
+}
+
+.output .termandcondition {
+	font-weight: bold;
+	text-decoration: underline;
+	padding-top: 10px;
+}
+
+.output ol {
+	padding-left: 20px;
+}
+
+.output p {
+	margin: 1;
+	padding: 1;
+}
+
+.output #policydetails table td {
+	border: none;
+}
+
+.output #premfooter_section3 table td {
+	border: none;
+}
+
+.output #premfooter_section3 {
+	font-size: 10px;
+}
+#personaldetails table{width:100% !important;}
+#policy_details tr td{text-align:center !important}
+.output .rembottomleftrightbrdr {
+	border-right: 0px;
+	border-bottom: 0px;
+	border-left: 0px;
+}
+
+.output .remtopleftbottombrdr {
+	border-top: 0px;
+	border-left: 0px;
+	border-bottom: 0px;
+}
+
+.output .barcodeDiv {
+	float: right;
+}
+
+.output #personaldetails table td {
+	width: 50%;
+	text-align: left;
+	border: none;
+	font-size: 11px;
+}
+
+.output #personaldetailsleft {
+	float: left;
+	text-align: left;
+}
+
+.output #personaldetailsright {
+	float: right;
+	text-align: left;
+}
+
+.output #agent_declaration {
+	border: 1px solid black;
+	float:left;
+	vertical-align: top;
+	text-align:left;
+	width:45%;
+	padding-top: 10px;
+}
+
+.output #policy_declaration {
+	border: 1px solid black;
+	float:right;
+	vertical-align: top;
+	text-align:left;
+	width:45%;
+	padding-top: 10px;
+}
+
+.output #centerdec {
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
+.output #declaration {
+	border: 0px;
+}
+
+.output thead {
+	display: table-header-group
+}
+
+.output tfoot {
+	display: table-row-group
+}
+
+.output tr {
+	page-break-inside: avoid
+}
+.tablesurround{
+margin:2% auto;
+width:90%;
+}
+</style>
+
+
+
+
+	<div class="output">
+		<div id="mainsection" class="clearboth">
+			<div style="clear: both;">
+				<table>
+					<tbody><tr>
+						<td style="border: 0px"><div id="imgDiv" class="backgroundimage">&nbsp;</div></td>
+						<td style="border: 0px; padding-left: 100px;"><div id="timestamp">10-11-2020</div></td>
+						<td style="border: 0px">
+							<div id="barcode_tgt" class="barcodeTarget barcodeDiv" style="padding: 0px; overflow: auto; width: 396px;"><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 20px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 8px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 8px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 8px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 8px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 6px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 6px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 8px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 8px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 8px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 6px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 6px"></div><div style="float: left; font-size: 0px; width:0; border-left: 8px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 8px"></div><div style="float: left; font-size: 0px; width:0; border-left: 6px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 8px"></div><div style="float: left; font-size: 0px; width:0; border-left: 8px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 4px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 6px"></div><div style="float: left; font-size: 0px; width:0; border-left: 6px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 2px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 2px"></div><div style="float: left; font-size: 0px; width:0; border-left: 4px solid #000000; height: 35px;"></div><div style="float: left; font-size: 0px; background-color: #FFFFFF; height: 35px; width: 20px"></div></div>
+							<div id="quoteorapp_no" style="padding-top: 40px; padding-right: 100px;">Quote No : qad51gfx3ol8a</div>
+						</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<div id="heading" class="mainheading">
+				Benefit Illustration for HDFC Life Sanchay Par Advantage<br>
+			</div>
+			<script id="headingscpt" type="text/x-jsrender" data-jsv-tmpl="_84">
+				Benefit Illustration for {{:prodname}}<br>
+			</script>
+			<div id="product_name" class="paddingtop">
+				<div class="title">This illustration has been produced by HDFC Life Insurance Company Limited to help you understand the benefits of your HDFC Life Sanchay Par Advantage
+				</div><br>
+			</div>
+			<script id="productnamescpt" type="text/x-jsrender" data-jsv-tmpl="_85">
+				<div class = 'title'>This illustration has been produced by HDFC Life Insurance Company Limited to help you understand the benefits of your {{:prodname}}
+				</div><br>
+			</script>
+			
+			<div id="personaldetails">
+				<table>
+					<tbody id="personaldetailsleft">
+						<tr>
+							<td>Age is taken as on last birthday</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Name of the Prospect /Policy holder:</td>
+							<td>Abc </td>
+						</tr>
+						<tr>
+							<td>Age:</td>
+							<td>33</td>
+						</tr>
+						<tr>
+							<td>Name of the Life Assured:</td>
+							<td>Anvika </td>
+						</tr>
+						<tr>
+							<td>Age:</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>Policy Term</td>
+							<td>96 year(s)</td>
+						</tr>
+						<tr>
+							<td>Premium Payment Term:</td>
+							<td>6 year(s)</td>
+						</tr>
+						<tr>
+							<td>Amount of Installment Premium(Without GST):</td>
+							<td>500000</td>
+						</tr>
+						<tr>
+							<td>Mode of Payment of Premium:</td>
+							<td>Annual</td>
+						</tr>
+						<tr>
+							<td>Mode of Payment of Survival Benefit:</td>
+							<td>Annual</td>
+						</tr>
+			</tbody>
+					<tbody id="personaldetailsright">
+						<tr>
+							<td><b>Proposal No:</b></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Name of the Product:</td>
+							<td>HDFC Life Sanchay Par Advantage</td>
+						</tr>
+						<tr>
+							<td>Tag Line:</td>
+							<td>A Non-Linked, Participating,<br> Life Insurance Plan</td>
+						</tr>
+						<tr>
+							<td>Unique Identification No:</td>
+							<td>101N136V01</td>
+						</tr>
+						<tr>
+							<td>GST Rate:</td>
+							<td>4.5% for first year</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>2.25% second year onwards</td>
+						</tr>
+			</tbody>
+				</table>
+			</div>
+			<script id="personaldetailsscptleft" type="text/x-jsrender" data-jsv-tmpl="_86">
+						<tr>
+							<td>Age is taken as on last birthday</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Name of the Prospect /Policy holder:</td>
+							<td>{{:pname}}</td>
+						</tr>
+						<tr>
+							<td>Age:</td>
+							<td>{{:prage}}</td>
+						</tr>
+						<tr>
+							<td>Name of the Life Assured:</td>
+							<td>{{:BD[2]}}</td>
+						</tr>
+						<tr>
+							<td>Age:</td>
+							<td>{{:BD[3]}}</td>
+						</tr>
+						<tr>
+							<td>Policy Term</td>
+							<td>{{:BD[4]}} year(s)</td>
+						</tr>
+						<tr>
+							<td>Premium Payment Term:</td>
+							<td>{{:BD[5]}} year(s)</td>
+						</tr>
+						<tr>
+							<td>Amount of Installment Premium(Without GST):</td>
+							<td>{{:BD[6]}}</td>
+						</tr>
+						<tr>
+							<td>Mode of Payment of Premium:</td>
+							<td>{{:BD[7]}}</td>
+						</tr>
+						<tr>
+							<td>Mode of Payment of Survival Benefit:</td>
+							<td>{{:BD[8]}}</td>
+						</tr>
+			</script>
+			<script id="personaldetailsscptright" type="text/x-jsrender" data-jsv-tmpl="_87">
+						<tr>
+							<td><b>Proposal No:</b></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Name of the Product:</td>
+							<td>{{:BD[10]}}</td>
+						</tr>
+						<tr>
+							<td>Tag Line:</td>
+							<td>{{:BD[11]}}</td>
+						</tr>
+						<tr>
+							<td>Unique Identification No:</td>
+							<td>{{:BD[12]}}</td>
+						</tr>
+						<tr>
+							<td>GST Rate:</td>
+							<td>{{:BD[13]}}</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>{{:BD[14]}}</td>
+						</tr>
+			</script>
+			<div>
+				<br> <b style="font-size: 13px">How to read and understand
+					this benefit illustration?</b><br><br>
+				<p>This benefit illustration is intended to show year wise premiums payable and benefits under the policy, at two assumed rates of interest i.e., 8% p.a. and 4% p.a. <br><br>
+				"Some benefits are guaranteed and some benefits are variable with returns based on the future performance of your insurer carrying on life insurance business. If your policy offers guaranteed benefits then these will be clearly marked "guaranteed" in the illustration table on this page. If your policy offers variable benefits then the illustrations on this page will show two different rates of assumed future investment returns, of 8% p.a. and 4% p.a. These assumed rates of return are not guaranteed and they are not the upper or lower limits of what you might get back, as the value of your policy is dependent on a number of factors including future investment performance."
+				</p>
+			</div>
+			<br> <br>
+			<div id="policy_details">
+			  <table>
+				<tbody><tr>
+					<td align="center" colspan="4" style="font-size:12px;"><b>Policy Details</b></td>
+				</tr>
+				<tr>
+					<td width="15%">Policy Option</td>
+					<td width="30%">Immediate Income</td>
+					<td width="20%">Sum Assured Rs.</td>
+					<td width="30%">30,00,000</td>
+				</tr>
+				<tr>
+					<td>Bonus Type</td>
+					<td>Cash Bonus</td>
+					<td>Sum Assured on Death (at inception of the policy) Rs.</td>
+					<td>75,00,000</td>
+				</tr>
+			</tbody></table>
+			</div>
+			<script id="policydetailsscpt" type="text/x-jsrender" data-jsv-tmpl="_88">
+			  <table>
+				<tr>
+					<td align="center" colspan="4" style="font-size:12px;"><b>Policy Details</b></td>
+				</tr>
+				<tr>
+					<td width="15%">Policy Option</td>
+					<td width="30%">{{:policyOption}}</td>
+					<td width="20%">Sum Assured Rs.</td>
+					<td width="30%">{{:basicSA}}</td>
+				</tr>
+				<tr>
+					<td>Bonus Type</td>
+					<td>Cash Bonus</td>
+					<td>Sum Assured on Death (at inception of the policy) Rs.</td>
+					<td>{{:deathSA}}</td>
+				</tr>  
+			</table>
+			</script>
+			<br> <br>
+			<div id="rider_details">
+				
+
+		</div>
+				<script id="riderdetailsscpt" type="text/x-jsrender" data-jsv-tmpl="_90">
+				{{if is_pac||is_adc||is_cc ||is_c4ci || is_inad }}	
+				<table>
+				<tr>
+					<td colspan="5"><b>Rider Details</b></td>
+				</tr>
+				<tr>
+					<td><b>Rider Name</b></td>
+					<td><b>Rider UIN</b></td>
+					<td><b>Rider PPT</b></td>
+					<td><b>Rider PT</b></td>
+					<td><b>Rider Sum Assured Rs.</b></td>
+				</tr>
+				{{if is_c4ci }}
+				
+				<tr>
+					<td>{{:c4ci_name}}</td>
+					<td>{{:c4ci_uin}}</td>
+					<td>{{:c4ci_ppt}} Years</td>
+					<td>{{:c4ci_term}} Years</td>
+					<td>{{:c4ci_sumassured}}</td>
+				</tr>
+				{{/if}}
+				{{if is_inad }}
+				<tr>
+					<td>{{:inad_name}}</td>
+					<td>{{:inad_uin}}</td>
+					<td>{{:inad_ppt}} Years</td>
+					<td>{{:inad_term}} Years</td>
+					<td>{{:iand_sumassured}}</td>
+				</tr>
+				{{/if}}	
+				{{if is_pac }}
+				<tr>
+					<td>{{:pac_name}}</td>
+					<td>{{:ppr_UIN}}</td>	
+					<td>{{:pac_ppt}} Months</td>
+					<td>{{:pac_term}} Months</td>
+					<td>{{:pac_sumassured}}</td>
+				</tr>
+				{{/if}}
+				{{if is_adc }}
+				<tr>
+					<td>{{:adc_name}}</td>
+					<td>{{:ppr_UIN}}</td>	
+					<td>{{:adc_ppt}} Months</td>
+					<td>{{:adc_term}} Months</td>
+					<td>{{:adc_sumassured}}</td>
+				</tr>
+				{{/if}}
+				{{if is_cc }}
+				<tr>
+					<td>{{:cc_name}}</td>
+					<td>{{:ppr_UIN}}</td>	
+					<td>{{:cc_ppt}} Years</td>
+					<td>{{:cc_term}} Years</td>
+					<td>{{:cc_sumassured}}</td>
+				</tr>
+				{{/if}}				
+			</table>
+			{{/if}}
+					
+		</script>
+
+				<br>
+				<div>
+			<table>
+				<tbody><tr>
+					<td colspan="8"><b>Premium Summary</b></td>
+				</tr>
+				<tr>
+					<td width="40%"></td>
+					<td width="15%"><b>Base Plan</b></td>
+					<td width="15%"><b>CI Rider</b></td>
+					<td width="15%"><b>IB Rider</b></td>
+					<td width="15%"><b>PP Rider (PAC)</b></td>
+					<td width="15%"><b>PP Rider (ADC)</b></td>
+					<td width="15%"><b>PP Rider (CC)</b></td>
+					<td width="15%"><b>Total Installment Premium</b></td>
+				</tr>
+				
+				</tbody><tbody id="prem_benefit_dtls">
+					<tr>
+						
+							<td>Instalment Premium without GST</td>
+						
+							<td>5,00,000</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>5,00,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+							<td>Instalment Premium with First Year GST</td>
+						
+							<td>5,22,500</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>5,22,500</td>
+						
+					</tr>
+			
+					<tr>
+						
+							<td>Instalment Premium with GST 2nd Year Onwards</td>
+						
+							<td>5,11,250</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>0</td>
+						
+							<td>5,11,250</td>
+						
+					</tr>
+			</tbody>
+			</table>
+			<script id="prembenefitdtlsscpt" type="text/x-jsrender" data-jsv-tmpl="_89">
+					<tr>
+						{{for #data}}
+							<td >{{:#data}}</td>
+						{{/for}}
+					</tr>
+			</script>
+		</div>
+			
+			<br>
+			
+			<div class="pagebreak backgroundimage"></div>
+			<div>
+				<p align="center">(Amounts in Rupees.)</p>
+				<table>
+					<thead style="font-weight: bold;">
+						<tr>
+							<td rowspan="3">Policy Year</td>
+							<td rowspan="3">Single / Annualized Premium</td>
+							<td rowspan="2" colspan="5">Guaranteed Benefits</td>
+							<td rowspan="2" colspan="3">Non Guaranteed Benefits @ 4% p.a.</td>
+							<td rowspan="2" colspan="3">Non-Guaranteed Benefits @ 8% p.a.</td>
+							<td colspan="6">Total Benefits <br>including Guaranteed and Non-Guaranteed Benefits</td>
+						</tr>
+						<tr>
+						<td colspan="2">Maturity Benefit</td>
+						<td colspan="2">Death Benefit</td>
+						<td colspan="2">Surrender Benefit</td>
+						</tr>
+						<tr>
+							<td>GA</td>
+							<td>Survival Benefit</td>
+							<td>Surrender Benefit#</td>
+							<td>Death Benefit</td>
+							<td>Maturity Benefit</td>
+							<td>RB</td>
+							<td>Cash Bonus</td>
+							<td>Surrender Benefit#</td>
+							<td>RB</td>
+							<td>Cash Bonus</td>
+							<td>Surrender Benefit#</td>
+							<td>Total Maturity Benefit, incl TB, if any, @ 4%<br>(7+TB)</td>
+							<td>Total Maturity Benefit, incl TB, if any, @ 8%<br>(7+TB)</td>
+							<td>Total Death Benefit  incl of TB, if any, @ 4%<br>(6+TB)</td>
+							<td>Total Death Benefit  incl of TB, if any, @ 8%<br>(6+TB)</td>
+							<td>Total Surrender Benefit  incl of TB, if any, @ 4%<br>(5+10)</td>
+							<td>Total Surrender Benefit  incl of TB, if any, @ 8%<br>(5+13)</td>
+						</tr>
+					</thead>
+					<tbody id="benefits_id">
+					<tr>
+						
+						<td>1</td>
+						
+						<td>2</td>
+						
+						<td>3</td>
+						
+						<td>4</td>
+						
+						<td>5</td>
+						
+						<td>6</td>
+						
+						<td>7</td>
+						
+						<td>8</td>
+						
+						<td>9</td>
+						
+						<td>10</td>
+						
+						<td>11</td>
+						
+						<td>12</td>
+						
+						<td>13</td>
+						
+						<td>14</td>
+						
+						<td>15</td>
+						
+						<td>16</td>
+						
+						<td>17</td>
+						
+						<td>18</td>
+						
+						<td>19</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>1</td>
+						
+						<td>5,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>2</td>
+						
+						<td>5,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>3,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>50,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>90,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>3,50,000</td>
+						
+						<td>3,90,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>3</td>
+						
+						<td>5,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>5,25,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>95,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>2,50,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>6,20,000</td>
+						
+						<td>7,75,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>4</td>
+						
+						<td>5,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>10,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,00,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>3,10,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>12,00,000</td>
+						
+						<td>13,10,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>5</td>
+						
+						<td>5,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>12,50,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>5,50,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>7,50,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>18,00,000</td>
+						
+						<td>20,00,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>6</td>
+						
+						<td>5,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>18,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>8,45,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>10,80,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>26,45,000</td>
+						
+						<td>28,80,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>7</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>19,50,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>7,85,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>10,95,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>27,35,000</td>
+						
+						<td>30,45,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>8</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>22,50,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>5,80,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>9,60,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>28,30,000</td>
+						
+						<td>32,10,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>9</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>24,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>5,20,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>9,85,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>29,20,000</td>
+						
+						<td>33,85,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>10</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>24,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>6,20,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>11,60,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>30,20,000</td>
+						
+						<td>35,60,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>11</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>24,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>7,15,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>13,40,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>31,15,000</td>
+						
+						<td>37,40,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>12</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>5,15,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>12,20,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>32,15,000</td>
+						
+						<td>39,20,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>13</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>6,15,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>14,10,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>33,15,000</td>
+						
+						<td>41,10,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>14</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>7,20,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>16,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>34,20,000</td>
+						
+						<td>43,00,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>15</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>8,30,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>18,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>35,30,000</td>
+						
+						<td>45,00,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>16</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>11,05,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>21,55,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>38,05,000</td>
+						
+						<td>48,55,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>17</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>12,20,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>23,70,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>39,20,000</td>
+						
+						<td>50,70,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>18</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>13,35,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>25,90,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>40,35,000</td>
+						
+						<td>52,90,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>19</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>14,55,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>28,20,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>41,55,000</td>
+						
+						<td>55,20,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>20</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>15,80,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>30,60,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>42,80,000</td>
+						
+						<td>57,60,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>21</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>17,10,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>33,05,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>44,10,000</td>
+						
+						<td>60,05,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>22</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>18,40,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>35,65,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>45,40,000</td>
+						
+						<td>62,65,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>23</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>19,75,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>37,15,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>46,75,000</td>
+						
+						<td>64,15,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>24</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>21,15,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>38,70,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>48,15,000</td>
+						
+						<td>65,70,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>25</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>22,55,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>40,40,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>49,55,000</td>
+						
+						<td>67,40,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>26</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>24,00,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>42,20,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>51,00,000</td>
+						
+						<td>69,20,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>27</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>25,50,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>44,20,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>52,50,000</td>
+						
+						<td>71,20,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>28</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>27,05,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>46,30,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>54,05,000</td>
+						
+						<td>73,30,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>29</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>28,65,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>48,60,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>55,65,000</td>
+						
+						<td>75,60,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>30</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>30,25,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>51,05,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>57,25,000</td>
+						
+						<td>78,05,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>31</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>31,95,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>53,75,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>58,95,000</td>
+						
+						<td>80,75,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>32</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>33,65,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>56,60,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>60,65,000</td>
+						
+						<td>83,60,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>33</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>35,40,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>59,70,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>62,40,000</td>
+						
+						<td>86,70,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>34</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>37,25,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>63,05,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>64,25,000</td>
+						
+						<td>90,05,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>35</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>39,10,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>66,65,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>66,10,000</td>
+						
+						<td>93,65,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>36</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>41,05,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>70,55,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>68,05,000</td>
+						
+						<td>97,55,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>37</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>43,05,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>74,75,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>70,05,000</td>
+						
+						<td>1,01,75,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>38</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>45,10,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>79,30,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>79,30,000</td>
+						
+						<td>72,10,000</td>
+						
+						<td>1,06,30,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>39</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>47,20,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>84,20,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>84,20,000</td>
+						
+						<td>74,20,000</td>
+						
+						<td>1,11,20,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>40</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>49,40,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>89,45,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>89,45,000</td>
+						
+						<td>76,40,000</td>
+						
+						<td>1,16,45,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>41</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>51,65,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>95,15,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>95,15,000</td>
+						
+						<td>78,65,000</td>
+						
+						<td>1,22,15,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>42</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>53,95,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,01,25,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>1,01,30,000</td>
+						
+						<td>80,95,000</td>
+						
+						<td>1,28,25,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>43</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>56,35,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,07,85,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>1,07,90,000</td>
+						
+						<td>83,35,000</td>
+						
+						<td>1,34,85,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>44</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>58,80,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,15,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>1,15,00,000</td>
+						
+						<td>85,80,000</td>
+						
+						<td>1,42,00,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>45</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>61,35,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,22,65,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>1,22,65,000</td>
+						
+						<td>88,35,000</td>
+						
+						<td>1,49,65,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>46</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>64,00,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,30,95,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>1,30,95,000</td>
+						
+						<td>91,00,000</td>
+						
+						<td>1,57,95,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>47</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>66,70,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,39,85,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>1,39,85,000</td>
+						
+						<td>93,70,000</td>
+						
+						<td>1,66,85,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>48</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>69,50,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,49,45,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>77,35,000</td>
+						
+						<td>1,49,50,000</td>
+						
+						<td>96,50,000</td>
+						
+						<td>1,76,45,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>49</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>72,40,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,59,80,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>79,80,000</td>
+						
+						<td>1,59,85,000</td>
+						
+						<td>99,40,000</td>
+						
+						<td>1,86,80,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>50</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>75,40,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,71,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>82,40,000</td>
+						
+						<td>1,71,00,000</td>
+						
+						<td>1,02,40,000</td>
+						
+						<td>1,98,00,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>51</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>78,45,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,83,05,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>85,10,000</td>
+						
+						<td>1,83,05,000</td>
+						
+						<td>1,05,45,000</td>
+						
+						<td>2,10,05,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>52</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>81,65,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>1,96,05,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>87,85,000</td>
+						
+						<td>1,96,05,000</td>
+						
+						<td>1,08,65,000</td>
+						
+						<td>2,23,05,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>53</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>84,90,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>2,10,05,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>90,75,000</td>
+						
+						<td>2,10,05,000</td>
+						
+						<td>1,11,90,000</td>
+						
+						<td>2,37,05,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>54</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>88,30,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>2,25,15,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>93,75,000</td>
+						
+						<td>2,25,15,000</td>
+						
+						<td>1,15,30,000</td>
+						
+						<td>2,52,15,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>55</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>91,80,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>2,41,40,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>96,85,000</td>
+						
+						<td>2,41,45,000</td>
+						
+						<td>1,18,80,000</td>
+						
+						<td>2,68,40,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>56</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>95,40,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>2,58,95,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,00,05,000</td>
+						
+						<td>2,59,00,000</td>
+						
+						<td>1,22,40,000</td>
+						
+						<td>2,85,95,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>57</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>99,10,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>2,77,90,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,03,35,000</td>
+						
+						<td>2,77,95,000</td>
+						
+						<td>1,26,10,000</td>
+						
+						<td>3,04,90,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>58</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,02,95,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>2,98,30,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,06,80,000</td>
+						
+						<td>2,98,35,000</td>
+						
+						<td>1,29,95,000</td>
+						
+						<td>3,25,30,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>59</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,06,95,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>3,20,30,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,10,40,000</td>
+						
+						<td>3,20,35,000</td>
+						
+						<td>1,33,95,000</td>
+						
+						<td>3,47,30,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>60</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,11,05,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>3,44,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,14,10,000</td>
+						
+						<td>3,44,05,000</td>
+						
+						<td>1,38,05,000</td>
+						
+						<td>3,71,00,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>61</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,15,25,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>3,69,55,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,17,90,000</td>
+						
+						<td>3,69,60,000</td>
+						
+						<td>1,42,25,000</td>
+						
+						<td>3,96,55,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>62</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,19,65,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>3,97,15,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,21,90,000</td>
+						
+						<td>3,97,20,000</td>
+						
+						<td>1,46,65,000</td>
+						
+						<td>4,24,15,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>63</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,24,15,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>4,26,85,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,26,00,000</td>
+						
+						<td>4,26,90,000</td>
+						
+						<td>1,51,15,000</td>
+						
+						<td>4,53,85,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>64</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,28,80,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>4,58,90,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,30,30,000</td>
+						
+						<td>4,58,95,000</td>
+						
+						<td>1,55,80,000</td>
+						
+						<td>4,85,90,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>65</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,33,65,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>4,93,45,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,34,70,000</td>
+						
+						<td>4,93,50,000</td>
+						
+						<td>1,60,65,000</td>
+						
+						<td>5,20,45,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>66</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,38,60,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>5,30,70,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,39,30,000</td>
+						
+						<td>5,30,75,000</td>
+						
+						<td>1,65,60,000</td>
+						
+						<td>5,57,70,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>67</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,43,75,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>5,70,85,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,44,05,000</td>
+						
+						<td>5,70,95,000</td>
+						
+						<td>1,70,75,000</td>
+						
+						<td>5,97,85,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>68</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,48,85,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>6,14,15,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,48,95,000</td>
+						
+						<td>6,14,25,000</td>
+						
+						<td>1,75,85,000</td>
+						
+						<td>6,41,15,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>69</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,53,95,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>6,60,85,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,54,05,000</td>
+						
+						<td>6,60,95,000</td>
+						
+						<td>1,80,95,000</td>
+						
+						<td>6,87,85,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>70</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,59,20,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>7,11,20,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,59,30,000</td>
+						
+						<td>7,11,30,000</td>
+						
+						<td>1,86,20,000</td>
+						
+						<td>7,38,20,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>71</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,64,65,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>7,65,50,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,64,75,000</td>
+						
+						<td>7,65,60,000</td>
+						
+						<td>1,91,65,000</td>
+						
+						<td>7,92,50,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>72</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,70,30,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>8,24,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,70,40,000</td>
+						
+						<td>8,24,10,000</td>
+						
+						<td>1,97,30,000</td>
+						
+						<td>8,51,00,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>73</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,76,15,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>8,87,10,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,76,25,000</td>
+						
+						<td>8,87,20,000</td>
+						
+						<td>2,03,15,000</td>
+						
+						<td>9,14,10,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>74</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,82,20,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>9,55,15,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,82,35,000</td>
+						
+						<td>9,55,25,000</td>
+						
+						<td>2,09,20,000</td>
+						
+						<td>9,82,15,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>75</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,88,50,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>10,28,50,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,88,60,000</td>
+						
+						<td>10,28,65,000</td>
+						
+						<td>2,15,50,000</td>
+						
+						<td>10,55,50,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>76</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>1,94,95,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>11,07,60,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,95,10,000</td>
+						
+						<td>11,07,75,000</td>
+						
+						<td>2,21,95,000</td>
+						
+						<td>11,34,60,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>77</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,01,70,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>11,92,90,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,01,80,000</td>
+						
+						<td>11,93,05,000</td>
+						
+						<td>2,28,70,000</td>
+						
+						<td>12,19,90,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>78</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,08,60,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>12,84,85,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,08,75,000</td>
+						
+						<td>12,85,00,000</td>
+						
+						<td>2,35,60,000</td>
+						
+						<td>13,11,85,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>79</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,15,80,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>13,84,05,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,15,95,000</td>
+						
+						<td>13,84,20,000</td>
+						
+						<td>2,42,80,000</td>
+						
+						<td>14,11,05,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>80</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,23,25,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>14,90,95,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,23,40,000</td>
+						
+						<td>14,91,10,000</td>
+						
+						<td>2,50,25,000</td>
+						
+						<td>15,17,95,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>81</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,30,95,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>16,06,25,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,31,10,000</td>
+						
+						<td>16,06,40,000</td>
+						
+						<td>2,57,95,000</td>
+						
+						<td>16,33,25,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>82</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,38,90,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>17,30,55,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,39,05,000</td>
+						
+						<td>17,30,70,000</td>
+						
+						<td>2,65,90,000</td>
+						
+						<td>17,57,55,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>83</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,47,10,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>18,64,55,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,47,30,000</td>
+						
+						<td>18,64,75,000</td>
+						
+						<td>2,74,10,000</td>
+						
+						<td>18,91,55,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>84</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,55,60,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>20,09,10,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,55,80,000</td>
+						
+						<td>20,09,30,000</td>
+						
+						<td>2,82,60,000</td>
+						
+						<td>20,36,10,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>85</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,64,40,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>21,64,90,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,64,65,000</td>
+						
+						<td>21,65,15,000</td>
+						
+						<td>2,91,40,000</td>
+						
+						<td>21,91,90,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>86</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,73,50,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>23,32,95,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,73,75,000</td>
+						
+						<td>23,33,15,000</td>
+						
+						<td>3,00,50,000</td>
+						
+						<td>23,59,95,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>87</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,82,90,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>25,14,10,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,83,15,000</td>
+						
+						<td>25,14,35,000</td>
+						
+						<td>3,09,90,000</td>
+						
+						<td>25,41,10,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>88</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>2,92,60,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>27,09,45,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>2,92,90,000</td>
+						
+						<td>27,09,75,000</td>
+						
+						<td>3,19,60,000</td>
+						
+						<td>27,36,45,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>89</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>3,02,65,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>29,20,10,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>3,02,95,000</td>
+						
+						<td>29,20,40,000</td>
+						
+						<td>3,29,65,000</td>
+						
+						<td>29,47,10,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>90</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>3,13,05,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>31,47,25,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>3,13,35,000</td>
+						
+						<td>31,47,55,000</td>
+						
+						<td>3,40,05,000</td>
+						
+						<td>31,74,25,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>91</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>3,23,75,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>33,92,15,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>3,24,05,000</td>
+						
+						<td>33,92,50,000</td>
+						
+						<td>3,50,75,000</td>
+						
+						<td>34,19,15,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>92</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>3,34,80,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>36,56,25,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>3,35,15,000</td>
+						
+						<td>36,56,60,000</td>
+						
+						<td>3,61,80,000</td>
+						
+						<td>36,83,25,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>93</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>3,46,25,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>39,41,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>3,46,60,000</td>
+						
+						<td>39,41,40,000</td>
+						
+						<td>3,73,25,000</td>
+						
+						<td>39,68,00,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>94</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>3,58,05,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>42,48,10,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>3,58,45,000</td>
+						
+						<td>42,48,45,000</td>
+						
+						<td>3,85,05,000</td>
+						
+						<td>42,75,10,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>95</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>27,00,000</td>
+						
+						<td>75,00,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>3,70,25,000</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>45,79,15,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>3,70,65,000</td>
+						
+						<td>45,79,60,000</td>
+						
+						<td>3,97,25,000</td>
+						
+						<td>46,06,15,000</td>
+						
+					</tr>
+			
+					<tr>
+						
+						<td>96</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>75,00,000</td>
+						
+						<td>30,00,000</td>
+						
+						<td>0</td>
+						
+						<td>40,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+						<td>1,22,500</td>
+						
+						<td>0</td>
+						
+						<td>3,65,60,000</td>
+						
+						<td>46,78,85,000</td>
+						
+						<td>4,03,45,000</td>
+						
+						<td>51,96,45,000</td>
+						
+						<td>0</td>
+						
+						<td>0</td>
+						
+					</tr>
+			</tbody>
+				</table>
+				<p>
+					<script id="benefits_id_scpt" type="text/x-jsrender" data-jsv-tmpl="_91">
+					<tr>
+						{{for #data}}
+						<td>{{:#data}}</td>
+						{{/for}}
+					</tr>
+			</script>
+			</p></div>
+			<div>
+				<br><br><br>
+				<div>
+				<b>Notes:</b><br> 															
+				1. Annualized Premium excludes underwriting extra premium, frequency loadings on premiums, the premiums paid towards the riders, if any, and Goods &amp; Service Tax. Refer Sales Literature for explanation of terms used in this illustration.<br>															
+				2. The survival benefits are payable at the end of the policy year. Upon payment at Maturity(Last Payout), the policy terminates and no further benefits become payable.<br>									
+				3. The death benefits shown above are at the end of the year. Upon payment, of death benefit the policy terminates and no further benefit is payable.<br> 															
+				4. The surrender benefits shown above are at the end of the year. Upon payment of surrender benefit, the policy terminates and no further benefit becomes payable.<br>											
+				5. The Premium and the Sum Assured on Maturity stated above is based on the information provided. They may vary as a result of underwriting.<br> 															
+				6. Any statutory levy or charges (such as Goods and Service tax) including any indirect tax may be charged to the Policyholder either now or in future by the company and such amount so charged shall become due and payable and shall be subject to the same terms and conditions as applicable to payment of premium.<br>
+				7. RB - Reversionary Bonus, TB - Terminal Bonus, GA - Guaranteed Additions	<br>
+				</div>
+				<div id="premfooter_section">
+				
+				<b>#In case cash bonuses have been paid out, the same shall be deducted from the Surrender Values indicated, at the time of pay out.</b>
+				
+				</div>
+				<script id="premfootersectionscpt" type="text/x-jsrender" data-jsv-tmpl="_95">
+				{{if POD.policyOption ==="Deferred Income"}}
+				<b>#In case cash bonuses have been paid out, the same (alongwith Guaranteed survival benefit) shall be deducted from the Surrender Values indicated, at the time of pay out.</b>
+				{{else}}
+				<b>#In case cash bonuses have been paid out, the same shall be deducted from the Surrender Values indicated, at the time of pay out.</b>
+				{{/if}}
+				</script>
+				<br><br><br>
+				<table id="declaration">
+					<tbody><tr>
+						<td id="agent_declaration">
+                    <br>
+					I <u>PRITEE MANE</u>, have explained the premiums charges and benefits under the product
+					fully to the prospect / policy holder.<br><br><br><br>
+					Place:<br><br>
+					<p style="text-align:left;">Date:   <span style="float:right;">Signature of Agent /Intermediary / Official</span></p>
+					<br>
+	        </td>
+						<td id="policy_declaration">
+		  <br>
+		I <u>Abc </u>,having received the information with respect to the above, have
+		understood the above statement before entering into the contract.<br><br><br><br><br><br>
+		<p style="text-align:left;">Date:   <span style="float:right;">Signature of Prospect / Policyholder</span>
+		<br> </p></td>
+					</tr>
+				</tbody></table>
+			</div>
+			<script id="agentdeclarationscpt" type="text/x-jsrender" data-jsv-tmpl="_92">	
+                    <br>
+					I <u>{{:agentname}}</u>, have explained the premiums charges and benefits under the product
+					fully to the prospect / policy holder.<br><br><br><br>
+					Place:<br><br>
+					<p style="text-align:left;">Date:   <span style="float:right;">Signature of Agent /Intermediary / Official</span></p>
+					<br>
+	        </script>
+			<script id="policydeclarationscpt" type="text/x-jsrender" data-jsv-tmpl="_93">
+		  <br>
+		I <u>{{:pname}}</u>,having received the information with respect to the above, have
+		understood the above statement before entering into the contract.<br><br><br><br><br><br>
+		<p style="text-align:left;">Date:   <span style="float:right;">Signature of Prospect / Policyholder</span>
+		<br> </script>
+		<br>
+			<div id="newnotesection" class="clearboth paddingtop">
+				Note: Kindly note that name of the company has changed from "HDFC Standard Life Insurance Company Limited" to "HDFC Life Insurance Company Limited".
+			</div>
+			<script id="newnotesectionscript" type="text/x-jsrender" data-jsv-tmpl="_94">
+				Note: Kindly note that name of the company has changed from "HDFC Standard Life Insurance Company Limited" to "HDFC Life Insurance Company Limited".
+			</script>
+		</div>
+	</div>
+	<script id="jsrenderscpt">
+		$('#heading').html($('#headingscpt').render(QNIAPP.OUT));
+		$('#product_name').html($('#productnamescpt').render(QNIAPP.OUT));
+		$('#personaldetailsleft').html(
+				$('#personaldetailsscptleft').render(QNIAPP.OUT));
+		$('#personaldetailsright').html(
+				$('#personaldetailsscptright').render(QNIAPP.OUT));
+		$('#policy_details').html(
+				$('#policydetailsscpt').render(QNIAPP.OUT.POD));
+		$('#prem_benefit_dtls').html(
+				$('#prembenefitdtlsscpt').render(QNIAPP.OUT.PS));
+		$('#rider_details').html(
+				$('#riderdetailsscpt').render(QNIAPP.OUT.RD));
+		$('#benefits_id').html(
+				$('#benefits_id_scpt').render(QNIAPP.OUT.Benefits));
+		$('#agent_declaration').html(
+				$('#agentdeclarationscpt').render(QNIAPP.OUT));
+		$('#policy_declaration').html(
+				$('#policydeclarationscpt').render(QNIAPP.OUT));
+		$('#newnotesection').html(
+				$('#newnotesectionscript').render(QNIAPP.OUT));
+        $('#premfooter_section').html(
+                $('#premfootersectionscpt').render(QNIAPP.OUT));
+		
+		$('#benefits_id td:not(:first-child),#prem_benefit_dtls td:not(:first-child)').each(function() {
+					$(this).html(addCommas($(this).text()));
+				});
+	</script>
+
+

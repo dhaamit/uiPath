@@ -1,0 +1,79 @@
+{
+  "name": "FirstRPA",
+  "description": "Blank Process",
+  "main": "Calculator.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "2.9.3",
+    "UiPath.Mail.Activities": "[1.9.3]",
+    "UiPath.PDF.Activities": "[3.3.0]",
+    "UiPath.System.Activities": "[20.10.1]",
+    "UiPath.UIAutomation.Activities": "20.10.6"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "20.4.3.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "80fcb408-a156-4e82-9e5e-692a0a737515",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "PDFDemo.xaml",
+      "uniqueId": "66e8ad69-9c15-42aa-aad5-e8130c2e43b6",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "GPDBusinessCheck.xaml",
+      "uniqueId": "c0deb79f-85ec-46e3-84a8-22faeb7d8c23",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Calculator.xaml",
+      "uniqueId": "b3e1a6ef-7a78-4d84-8396-5123dbee2171",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "ExcelOperations.xaml",
+      "uniqueId": "99df463c-90d0-4962-884b-b8486e20af58",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {}
+}
